@@ -34,6 +34,7 @@ public class LoginTest extends BaseTest {
 		assertTrue(loginPage.loginSuccessMessageIsDisplayed());
 
 		loginPage.logoutFromApp();
+		Thread.sleep(10000);
 	}
 	
 	@Parameters({"invalidUser","invalidPass"})

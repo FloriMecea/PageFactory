@@ -1,6 +1,7 @@
 package utils;
 
 import java.io.File;
+import java.net.MalformedURLException;
 
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -20,7 +21,7 @@ public class BaseTest extends Driver{
 	@Parameters({"browser"}) //il ia din testng_parameters.xml, trebuie sa rulam click drepata
 	//pe testNG -runAs
 	@BeforeClass(alwaysRun=true)
-	public void setup(String browser) {
+	public void setup(String browser) throws MalformedURLException {
 		driver=initDriver(browser);
 		driver.get("https://keybooks.ro/");
 	}
