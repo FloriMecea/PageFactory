@@ -26,17 +26,19 @@ public class Driver {
 	
 		RemoteWebDriver rwd;
 		if (browser.equalsIgnoreCase("chrome")) {
-			//WebDriverManager.chromedriver().setup();
-		//	driver.set(new ChromeDriver());
-			
 			ChromeOptions option = new ChromeOptions();
-			option.addArguments("--headless");
-			option.addArguments("--window-size=1920,1080");
+			//option.addArguments("--headless");
+			//option.addArguments("--window-size=1920,1080");
 			
-			rwd = new RemoteWebDriver(new URL("http://localhost:4444/"), option);
-			driver.set(rwd);
+			WebDriverManager.chromedriver().setup();
+		//	driver.set(new ChromeDriver());
+			driver.set(new ChromeDriver(option));
+
 			
-			driver.get().manage().window().maximize();
+		//	rwd = new RemoteWebDriver(new URL("http://localhost:4444/"), option);
+		//	driver.set(rwd);
+			
+			driver.get().manage().window().maximize();  //pe headless nu se mai aplica si atunci facem linia 31 cu window size
 			driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			
 			long chromeId=Thread.currentThread().getId();
